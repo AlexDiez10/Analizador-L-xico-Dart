@@ -5,54 +5,136 @@
 # numbers and +,-,*,/
 # ------------------------------------------------------------
 import ply.lex as lex
+from ply.ctokens import t_DECREMENT, t_INCREMENT, t_MODULO
 
 reserved = {
-    'if':'IF',
-    'else':'Else',
-    'while':'WHILE',
-    'for':'FOR',
     'print': 'PRINT'
+}
+
+bucles = {
+    'while': 'WHILE',
+    'for': 'FOR'
+}
+
+conditionals = {
+    'if': 'IF',
+    'else': 'Else',
+    'else if' : 'ELSE_IF',
+    'switch': 'SWITCH',
+    'case': 'CASE',
+    'default': 'DEFAULT'
+}
+
+type_variables = {
+    'final': 'TYPEV_FINAL',
+    'const': 'TYPEV_CONST',
+    'String': 'TYPEV_VARIABLE',
+    'int': 'TYPEV_INT',
+    'double': 'TYPEV_DOUBLE',
+    'bool': 'TYPEV_BOOLEAN',
+    'var': 'TYPEV_VAR',
+    'Object' : 'TYPEV_OBJECT',
+    'late' : 'TYPEV_LATE',
+    'List' : 'TYPEVLIST',
+    'Map' : 'TYPEVMAP',
+    'Set' : 'TYPEV_SET',
+    'enum' : 'ENUM',
+    'Queue' : 'QUEUE',
 }
 
 # List of token names.   This is always required
 tokens = (
-   'NUMBER',
-   'FLOAT',
-   'PLUS',
-   'MINUS',
-   'TIMES',
-   'DIVIDE',
-   'LPAREN',
-   'RPAREN',
+    'COMMENT',
+    'INT',
+    'STRING',
+    'DOUBLE',
+    'BOOLEAN',
+    'NULL',
+    'PLUS',
+    'MINUS',
+    'TIMES',
+    'DIVIDE',
+    'MODULO',
+    'LPAREN',
+    'RPAREN',
     'MOD',
     'VARIABLE',
-    'POINT',
     'LKEY',
     'RKEY',
-    'COMA'
-) + tuple(reserved.values())
+    'LBRACKETS',
+    'RBRACKETS',
+    'COMA',
+    'AND',
+    'OR',
+    'EQUALITY',
+    'INEQUALITY',
+    'INCREMENT',
+    'DECREMENT',
+    'INCREMENT_VAR',
+    'DECREMENT_VAR',
+    'GREATER_THAN',
+    'LESS_THAN',
+    'GREATER_EQ_THAN',
+    'LESS_EQ_THAN',
+    'SEMICOLON'
+) + tuple(reserved.values()) + tuple(bucles.values()) + tuple(conditionals.values()) + tuple(type_variables.values())
 
 # Regular expression rules for simple tokens
 t_PLUS    = r'\+'
 t_MINUS   = r'-'
 t_TIMES   = r'\*'
-t_DIVIDE  = r'/'
+t_DIVIDE  = r'\/'
+t_MODULO = r'\%'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
 t_MOD = r'\%'
-t_POINT = r'\;'
-t_LKEY  = r'\['
-t_RKEY  = r'\]'
+t_LKEY  = r'\{'
+t_RKEY  = r'\}'
+t_LBRACKETS = r'\['
+t_RBRACKETS = r'\]'
 t_COMA = r'\,'
+t_AND = r'\&\&'
+t_OR = r'\|\|'
+t_EQUALITY = r'\=\='
+t_INEQUALITY = r'\!\='
+t_INCREMENT = r'\+\='
+t_DECREMENT = r'\-\='
+t_INCREMENT_VAR = r'\+\+'
+t_DECREMENT_VAR = r'\-\-'
+t_GREATER_THAN = r'\>'
+t_LESS_THAN = r'\<'
+t_GREATER_EQ_THAN = r'\>\='
+t_LESS_EQ_THAN = r'\<\='
+t_SEMICOLON = r'\;'
 
 # A regular expression rule with some action code
 
-def t_FLOAT(t):
+def t_COMMENT(t):
+    r'(\/\/[a-zA-Z0-9 ]+ | \/\*[a-zA-Z0-9 ]+\*\/)'
+    return t
+
+def t_NULL(t):
+    r'null'
+    return t
+
+def t_BOOLEAN(t):
+    r'(True|False)'
+    if(t.value == 'True'):
+        t.value = True
+        return t
+    t.value = False
+    return t
+
+def t_STRING(t):
+    r'\'[a-zA-Z0-9]+\''
+    return t
+
+def t_DOUBLE(t):
     r'\d+\.?\d+'
     t.value = float(t.value)
     return t
 
-def t_NUMBER(t):
+def t_INT(t):
     r'\d+'
     t.value = int(t.value)
     return t
@@ -80,10 +162,12 @@ lexer = lex.lex()
 
 # Test it out
 data = '''
-    3 + 4 * 10 a % _134 while IF 1.4
-  + -20 *2print(6.5 + 6);
-  print(a);
-  [1,2,4]
+    const final int float String null && || != == += -=
+    //HOLA
+    /* Hola */
+    a++
+    b-- a
+    > < >= <= ;
 '''
 
 # Give the lexer some input

@@ -1,55 +1,69 @@
-# ------------------------------------------------------------
-# calclex.py
-#
-# tokenizer for a simple expression evaluator for
-# numbers and +,-,*,/
-# ------------------------------------------------------------
 import ply.lex as lex
-from ply.ctokens import t_DECREMENT, t_INCREMENT, t_MODULO
 
 reserved = {
-    'print': 'PRINT'
-}
-
-bucles = {
+    'print':'PRINT',
     'while': 'WHILE',
-    'for': 'FOR'
-}
-
-conditionals = {
+    'for': 'FOR',
     'if': 'IF',
-    'else': 'Else',
-    'else if' : 'ELSE_IF',
+    'else': 'ELSE',
     'switch': 'SWITCH',
     'case': 'CASE',
-    'default': 'DEFAULT'
+    'default': 'DEFAULT',
+    'break': 'BREAK',
+    'continue': 'CONTINUE',
+    'return': 'RETURN',
+    'true': 'TRUE',
+    'false': 'FALSE',
+    'null': 'NULL',
+    'void': 'VOID',
+    'int': 'INT_TYPE',
+    'double': 'DOUBLE_TYPE',
+    'String': 'STRING_TYPE',
+    'bool': 'BOOL_TYPE',
+    'var': 'VAR',
+    'final': 'FINAL',
+    'const': 'CONST',
+    'enum': 'ENUM',
+    'class': 'CLASS',
+    'new': 'NEW',
+    'static': 'STATIC',
+    'import': 'IMPORT',
+    'export': 'EXPORT',
+    'this': 'THIS',
+    'super': 'SUPER',
+    'extends': 'EXTENDS',
+    'implements': 'IMPLEMENTS',
+    'with': 'WITH',
+    'abstract': 'ABSTRACT',
+    'async': 'ASYNC',
+    'await': 'AWAIT',
+    'required': 'REQUIRED',
+    'get': 'GET',
+    'set': 'SET',
+    'late': 'LATE',
+    'covariant': 'COVARIANT',
+    'operator': 'OPERATOR',
+    'try': 'TRY',
+    'catch': 'CATCH',
+    'finally': 'FINALLY',
+    'throw': 'THROW',
+    'rethrow': 'RETHROW',
+    'is': 'IS', 
+    'as': 'AS',
+    'in': 'IN',
+    'on': 'ON',
+    'assert': 'ASSERT'
 }
 
-type_variables = {
-    'final': 'TYPEV_FINAL',
-    'const': 'TYPEV_CONST',
-    'String': 'TYPEV_VARIABLE',
-    'int': 'TYPEV_INT',
-    'double': 'TYPEV_DOUBLE',
-    'bool': 'TYPEV_BOOLEAN',
-    'var': 'TYPEV_VAR',
-    'Object' : 'TYPEV_OBJECT',
-    'late' : 'TYPEV_LATE',
-    'List' : 'TYPEVLIST',
-    'Map' : 'TYPEVMAP',
-    'Set' : 'TYPEV_SET',
-    'enum' : 'ENUM',
-    'Queue' : 'QUEUE',
-}
 
-# List of token names.   This is always required
+# Lista de nombres de tokens
 tokens = (
     'COMMENT',
+    'DOC_COMMENT',
     'INT',
     'STRING',
     'DOUBLE',
     'BOOLEAN',
-    'NULL',
     'PLUS',
     'MINUS',
     'TIMES',
@@ -76,8 +90,30 @@ tokens = (
     'LESS_THAN',
     'GREATER_EQ_THAN',
     'LESS_EQ_THAN',
-    'SEMICOLON'
-) + tuple(reserved.values()) + tuple(bucles.values()) + tuple(conditionals.values()) + tuple(type_variables.values())
+    'SEMICOLON',
+    'ASSIGN',
+    'PLUS_ASSIGN',
+    'MINUS_ASSIGN',
+    'TIMES_ASSIGN',
+    'DIVIDE_ASSIGN',
+    'MODULO_ASSIGN',
+    'LSHIFT_ASSIGN',
+    'RSHIFT_ASSIGN',
+    'BITWISE_AND_ASSIGN',
+    'BITWISE_OR_ASSIGN',
+    'BITWISE_XOR_ASSIGN',
+    'BITWISE_AND',
+    'BITWISE_OR',
+    'BITWISE_XOR',
+    'BITWISE_NOT',
+    'LSHIFT',
+    'RSHIFT',
+    'TERNARY_IF',
+    'TERNARY_ELSE',
+    'NULL_COALESCING',
+    'NULL_COALESCING_ASSIGN'
+) + tuple(reserved.values())
+
 
 # Regular expression rules for simple tokens
 t_PLUS    = r'\+'
@@ -95,26 +131,46 @@ t_RBRACKETS = r'\]'
 t_COMA = r'\,'
 t_AND = r'\&\&'
 t_OR = r'\|\|'
-t_EQUALITY = r'\=\='
-t_INEQUALITY = r'\!\='
-t_INCREMENT = r'\+\='
-t_DECREMENT = r'\-\='
+t_EQUALITY = r'=='
+t_INEQUALITY = r'\!='
 t_INCREMENT_VAR = r'\+\+'
-t_DECREMENT_VAR = r'\-\-'
+t_DECREMENT_VAR = r'--'
 t_GREATER_THAN = r'\>'
 t_LESS_THAN = r'\<'
-t_GREATER_EQ_THAN = r'\>\='
-t_LESS_EQ_THAN = r'\<\='
+t_GREATER_EQ_THAN = r'\>='
+t_LESS_EQ_THAN = r'\<='
 t_SEMICOLON = r'\;'
 
-# A regular expression rule with some action code
+t_ASSIGN = r'='
+t_PLUS_ASSIGN = r'\+='
+t_MINUS_ASSIGN = r'-='
+t_TIMES_ASSIGN = r'\*='
+t_DIVIDE_ASSIGN = r'/='
+t_MODULO_ASSIGN = r'%='
+t_LSHIFT_ASSIGN = r'<<='
+t_RSHIFT_ASSIGN = r'>>='
+t_BITWISE_AND_ASSIGN = r'&='
+t_BITWISE_OR_ASSIGN = r'\|='
+t_BITWISE_XOR_ASSIGN = r'\^='
+t_BITWISE_AND = r'&'
+t_BITWISE_OR = r'\|'
+t_BITWISE_XOR = r'\^'
+t_BITWISE_NOT = r'~'
+t_LSHIFT = r'<<'
+t_RSHIFT = r'>>'
+t_TERNARY_IF = r'\?'
+t_TERNARY_ELSE = r':'
+t_NULL_COALESCING = r'\?\?'
+t_NULL_COALESCING_ASSIGN = r'\?\?='
 
-def t_COMMENT(t):
-    r'(\/\/[a-zA-Z0-9 ]+ | \/\*[a-zA-Z0-9 ]+\*\/)'
+def t_DOC_COMMENT(t):
+    r'(///.*|/\*\*[\s\S]*?\*/)'
+    t.lexer.lineno += t.value.count("\n")
     return t
 
-def t_NULL(t):
-    r'null'
+def t_COMMENT(t):
+    r'//.*|/\*[\s\S]*?\*/'
+    t.lexer.lineno += t.value.count("\n")
     return t
 
 def t_BOOLEAN(t):
@@ -126,7 +182,7 @@ def t_BOOLEAN(t):
     return t
 
 def t_STRING(t):
-    r'\'[a-zA-Z0-9]+\''
+    r"(\".*\"|'.*')"
     return t
 
 def t_DOUBLE(t):
@@ -144,36 +200,36 @@ def t_VARIABLE(t):
     t.type = reserved.get(t.value, 'VARIABLE')
     return t
 
-# Define a rule so we can track line numbers
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
 
-# A string containing ignored characters (spaces and tabs)
 t_ignore  = ' \t'
 
-# Error handling rule
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
 
-# Build the lexer
 lexer = lex.lex()
 
-# Test it out
 data = '''
     const final int float String null && || != == += -=
     //HOLA
-    /* Hola */
+    /* 
+    Hola 
+    */
+    ///hola
+    ///xd
     a++
     b-- a
     > < >= <= ;
+    void main() {
+    print("Hello, World!");
+}
 '''
 
-# Give the lexer some input
 lexer.input(data)
 
-# Tokenize
 while True:
     tok = lexer.token()
     if not tok:

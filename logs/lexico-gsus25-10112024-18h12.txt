@@ -1,0 +1,39 @@
+CONST (const) at line 2
+FINAL (final) at line 2
+INT_TYPE (int) at line 2
+VARIABLE (float) at line 2
+STRING_TYPE (String) at line 2
+NULL (null) at line 2
+AND (&&) at line 2
+OR (||) at line 2
+INEQUALITY (!=) at line 2
+EQUALITY (==) at line 2
+PLUS_ASSIGN (+=) at line 2
+MINUS_ASSIGN (-=) at line 2
+COMMENT (//HOLA) at line 3
+COMMENT (/* 
+        Hola 
+        */) at line 4
+DOC_COMMENT (///hola) at line 7
+DOC_COMMENT (///xd) at line 8
+VARIABLE (a) at line 9
+INCREMENT_VAR (++) at line 9
+VARIABLE (b) at line 10
+DECREMENT_VAR (--) at line 10
+VARIABLE (a) at line 10
+GREATER_THAN (>) at line 11
+LESS_THAN (<) at line 11
+GREATER_EQ_THAN (>=) at line 11
+LESS_EQ_THAN (<=) at line 11
+SEMICOLON (;) at line 11
+VOID (void) at line 12
+VARIABLE (main) at line 12
+LPAREN (() at line 12
+RPAREN ()) at line 12
+LKEY ({) at line 12
+PRINT (print) at line 13
+LPAREN (() at line 13
+STRING ("Hello, World!") at line 13
+RPAREN ()) at line 13
+SEMICOLON (;) at line 13
+RKEY (}) at line 14

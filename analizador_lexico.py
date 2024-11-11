@@ -1,14 +1,4 @@
 import ply.lex as lex
-import os
-from datetime import datetime
-
-username = input("Ingrese el nombre de usuario de Git: ")
-timestamp = datetime.now().strftime("%d%m%Y-%Hh%M")
-log_filename = f"logs/lexico-{username}-{timestamp}.txt"
-
-os.makedirs("logs", exist_ok=True)
-
-log_file=open(log_filename, "w")
 
 
 reserved = {
@@ -102,6 +92,8 @@ tokens = (
     'GREATER_EQ_THAN',
     'LESS_EQ_THAN',
     'SEMICOLON',
+    'PERIOD',
+    'NOT',
     'ASSIGN',
     'PLUS_ASSIGN',
     'MINUS_ASSIGN',
@@ -151,7 +143,8 @@ t_LESS_THAN = r'\<'
 t_GREATER_EQ_THAN = r'\>='
 t_LESS_EQ_THAN = r'\<='
 t_SEMICOLON = r'\;'
-
+t_PERIOD = r'\.'
+t_NOT = r'!'
 t_ASSIGN = r'='
 t_PLUS_ASSIGN = r'\+='
 t_MINUS_ASSIGN = r'-='
@@ -217,26 +210,16 @@ def t_newline(t):
 
 t_ignore  = ' \t'
 
+def buscar_columna(input_data, token):
+    line_start = input_data.rfind('\n', 0, token.lexpos) + 1
+    return (token.lexpos - line_start) + 1
+
 def t_error(t):
-    error_msg = f"Illegal character '{t.value[0]}' at line {t.lexer.lineno}\n"
-    log_file.write(error_msg)
+    column = buscar_columna(t.lexer.lexdata, t)
+    error_msg = f"Caracter ilegal '{t.value[0]}' en la línea {t.lineno}, columna {column}\n"
     print(error_msg)
     t.lexer.skip(1)
-
+    return error_msg
 
 
 lexer = lex.lex()
-
-with open("Algoritmo 1 - Luis Borja.dart", "r", encoding="utf-8") as file:
-    codigo_dart = file.read()
-    lexer.input(codigo_dart)
-
-while True:
-    tok = lexer.token()
-    if not tok:
-        break
-    log_entry = f"{tok.type} ({tok.value}) at line {tok.lineno}\n"
-    log_file.write(log_entry)
-    print(log_entry)
-
-log_file.close()

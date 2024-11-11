@@ -1,0 +1,214 @@
+COMMENT ('/*
+  Este es un comentario multilinea.
+  Define una función de cálculo.
+*/') en la línea 1, columna 1
+DOC_COMMENT ('/// Comentario de documentación') en la línea 6, columna 1
+DOC_COMMENT ('/// para la función principal') en la línea 7, columna 1
+VOID ('void') en la línea 8, columna 1
+VARIABLE ('main') en la línea 8, columna 6
+LPAREN ('(') en la línea 8, columna 10
+RPAREN (')') en la línea 8, columna 11
+LKEY ('{') en la línea 8, columna 13
+COMMENT ('// Variables constantes y finales') en la línea 9, columna 5
+FINAL ('final') en la línea 10, columna 5
+INT_TYPE ('int') en la línea 10, columna 11
+VARIABLE ('maxLimit') en la línea 10, columna 15
+ASSIGN ('=') en la línea 10, columna 24
+DOUBLE ('100.0') en la línea 10, columna 26
+SEMICOLON (';') en la línea 10, columna 29
+CONST ('const') en la línea 11, columna 5
+DOUBLE_TYPE ('double') en la línea 11, columna 11
+VARIABLE ('pi') en la línea 11, columna 18
+ASSIGN ('=') en la línea 11, columna 21
+DOUBLE ('3.1415') en la línea 11, columna 23
+SEMICOLON (';') en la línea 11, columna 29
+STRING_TYPE ('String') en la línea 12, columna 5
+VARIABLE ('greeting') en la línea 12, columna 12
+ASSIGN ('=') en la línea 12, columna 21
+STRING ('"Hola, mundo!"') en la línea 12, columna 23
+SEMICOLON (';') en la línea 12, columna 37
+COMMENT ('// Comentario de una sola línea') en la línea 14, columna 5
+PRINT ('print') en la línea 15, columna 5
+LPAREN ('(') en la línea 15, columna 10
+VARIABLE ('greeting') en la línea 15, columna 11
+RPAREN (')') en la línea 15, columna 19
+SEMICOLON (';') en la línea 15, columna 20
+COMMENT ('// Declaración de variables de diferentes tipos') en la línea 17, columna 5
+INT_TYPE ('int') en la línea 18, columna 5
+VARIABLE ('counter') en la línea 18, columna 9
+ASSIGN ('=') en la línea 18, columna 17
+INT ('0') en la línea 18, columna 19
+SEMICOLON (';') en la línea 18, columna 20
+DOUBLE_TYPE ('double') en la línea 19, columna 5
+VARIABLE ('result') en la línea 19, columna 12
+ASSIGN ('=') en la línea 19, columna 19
+DOUBLE ('0.0') en la línea 19, columna 21
+SEMICOLON (';') en la línea 19, columna 24
+BOOL_TYPE ('bool') en la línea 20, columna 5
+VARIABLE ('isActive') en la línea 20, columna 10
+ASSIGN ('=') en la línea 20, columna 19
+TRUE ('true') en la línea 20, columna 21
+SEMICOLON (';') en la línea 20, columna 25
+VAR ('var') en la línea 21, columna 5
+VARIABLE ('dynamicVar') en la línea 21, columna 9
+ASSIGN ('=') en la línea 21, columna 20
+STRING ('"Soy una variable dinámica"') en la línea 21, columna 22
+SEMICOLON (';') en la línea 21, columna 49
+COMMENT ('// Operadores aritméticos') en la línea 23, columna 5
+VARIABLE ('counter') en la línea 24, columna 5
+INCREMENT_VAR ('++') en la línea 24, columna 12
+SEMICOLON (';') en la línea 24, columna 14
+VARIABLE ('counter') en la línea 25, columna 5
+PLUS_ASSIGN ('+=') en la línea 25, columna 13
+INT ('5') en la línea 25, columna 16
+SEMICOLON (';') en la línea 25, columna 17
+VARIABLE ('counter') en la línea 26, columna 5
+ASSIGN ('=') en la línea 26, columna 13
+VARIABLE ('counter') en la línea 26, columna 15
+MINUS ('-') en la línea 26, columna 23
+INT ('2') en la línea 26, columna 25
+SEMICOLON (';') en la línea 26, columna 26
+VARIABLE ('result') en la línea 27, columna 5
+ASSIGN ('=') en la línea 27, columna 12
+VARIABLE ('pi') en la línea 27, columna 14
+TIMES ('*') en la línea 27, columna 17
+VARIABLE ('counter') en la línea 27, columna 19
+DIVIDE ('/') en la línea 27, columna 27
+INT ('2') en la línea 27, columna 29
+SEMICOLON (';') en la línea 27, columna 30
+COMMENT ('// Condicionales y operadores de comparación') en la línea 29, columna 5
+IF ('if') en la línea 30, columna 5
+LPAREN ('(') en la línea 30, columna 8
+VARIABLE ('isActive') en la línea 30, columna 9
+AND ('&&') en la línea 30, columna 18
+VARIABLE ('counter') en la línea 30, columna 21
+LESS_THAN ('<') en la línea 30, columna 29
+VARIABLE ('maxLimit') en la línea 30, columna 31
+RPAREN (')') en la línea 30, columna 39
+LKEY ('{') en la línea 30, columna 41
+PRINT ('print') en la línea 31, columna 9
+LPAREN ('(') en la línea 31, columna 14
+STRING ('"El contador es menor que el límite y está activo"') en la línea 31, columna 15
+RPAREN (')') en la línea 31, columna 65
+SEMICOLON (';') en la línea 31, columna 66
+RKEY ('}') en la línea 32, columna 5
+ELSE ('else') en la línea 32, columna 7
+IF ('if') en la línea 32, columna 12
+LPAREN ('(') en la línea 32, columna 15
+VARIABLE ('counter') en la línea 32, columna 16
+GREATER_EQ_THAN ('>=') en la línea 32, columna 24
+VARIABLE ('maxLimit') en la línea 32, columna 27
+OR ('||') en la línea 32, columna 36
+NOT ('!') en la línea 32, columna 39
+VARIABLE ('isActive') en la línea 32, columna 40
+RPAREN (')') en la línea 32, columna 48
+LKEY ('{') en la línea 32, columna 50
+PRINT ('print') en la línea 33, columna 9
+LPAREN ('(') en la línea 33, columna 14
+STRING ('"El contador ha alcanzado o superado el límite o está inactivo"') en la línea 33, columna 15
+RPAREN (')') en la línea 33, columna 78
+SEMICOLON (';') en la línea 33, columna 79
+RKEY ('}') en la línea 34, columna 5
+ELSE ('else') en la línea 34, columna 7
+LKEY ('{') en la línea 34, columna 12
+PRINT ('print') en la línea 35, columna 9
+LPAREN ('(') en la línea 35, columna 14
+STRING ('"Estado desconocido"') en la línea 35, columna 15
+RPAREN (')') en la línea 35, columna 35
+SEMICOLON (';') en la línea 35, columna 36
+RKEY ('}') en la línea 36, columna 5
+COMMENT ('// Bucle 'for' y operadores de incremento y decremento') en la línea 38, columna 5
+FOR ('for') en la línea 39, columna 5
+LPAREN ('(') en la línea 39, columna 9
+INT_TYPE ('int') en la línea 39, columna 10
+VARIABLE ('i') en la línea 39, columna 14
+ASSIGN ('=') en la línea 39, columna 16
+INT ('0') en la línea 39, columna 18
+SEMICOLON (';') en la línea 39, columna 19
+VARIABLE ('i') en la línea 39, columna 21
+LESS_THAN ('<') en la línea 39, columna 23
+INT ('5') en la línea 39, columna 25
+SEMICOLON (';') en la línea 39, columna 26
+VARIABLE ('i') en la línea 39, columna 28
+INCREMENT_VAR ('++') en la línea 39, columna 29
+RPAREN (')') en la línea 39, columna 31
+LKEY ('{') en la línea 39, columna 33
+PRINT ('print') en la línea 40, columna 9
+LPAREN ('(') en la línea 40, columna 14
+STRING ('"Iteración número: ${i + 1}"') en la línea 40, columna 15
+RPAREN (')') en la línea 40, columna 43
+SEMICOLON (';') en la línea 40, columna 44
+VARIABLE ('dynamicVar') en la línea 41, columna 9
+ASSIGN ('=') en la línea 41, columna 20
+STRING ('"Valor actualizado en la iteración ${i + 1}"') en la línea 41, columna 22
+SEMICOLON (';') en la línea 41, columna 66
+RKEY ('}') en la línea 42, columna 5
+COMMENT ('// Switch-case') en la línea 44, columna 5
+SWITCH ('switch') en la línea 45, columna 5
+LPAREN ('(') en la línea 45, columna 12
+VARIABLE ('counter') en la línea 45, columna 13
+RPAREN (')') en la línea 45, columna 20
+LKEY ('{') en la línea 45, columna 22
+CASE ('case') en la línea 46, columna 9
+DOUBLE ('10.0') en la línea 46, columna 14
+TERNARY_ELSE (':') en la línea 46, columna 16
+PRINT ('print') en la línea 47, columna 13
+LPAREN ('(') en la línea 47, columna 18
+STRING ('"El contador es exactamente 10"') en la línea 47, columna 19
+RPAREN (')') en la línea 47, columna 50
+SEMICOLON (';') en la línea 47, columna 51
+BREAK ('break') en la línea 48, columna 13
+SEMICOLON (';') en la línea 48, columna 18
+CASE ('case') en la línea 49, columna 9
+DOUBLE ('20.0') en la línea 49, columna 14
+TERNARY_ELSE (':') en la línea 49, columna 16
+PRINT ('print') en la línea 50, columna 13
+LPAREN ('(') en la línea 50, columna 18
+STRING ('"El contador es exactamente 20"') en la línea 50, columna 19
+RPAREN (')') en la línea 50, columna 50
+SEMICOLON (';') en la línea 50, columna 51
+BREAK ('break') en la línea 51, columna 13
+SEMICOLON (';') en la línea 51, columna 18
+DEFAULT ('default') en la línea 52, columna 9
+TERNARY_ELSE (':') en la línea 52, columna 16
+PRINT ('print') en la línea 53, columna 13
+LPAREN ('(') en la línea 53, columna 18
+STRING ('"El contador tiene un valor distinto a 10 o 20"') en la línea 53, columna 19
+RPAREN (')') en la línea 53, columna 66
+SEMICOLON (';') en la línea 53, columna 67
+RKEY ('}') en la línea 54, columna 5
+COMMENT ('// Llamada a una función asíncrona') en la línea 56, columna 5
+VARIABLE ('fetchData') en la línea 57, columna 5
+LPAREN ('(') en la línea 57, columna 14
+RPAREN (')') en la línea 57, columna 15
+SEMICOLON (';') en la línea 57, columna 16
+RKEY ('}') en la línea 58, columna 1
+COMMENT ('// Función asíncrona de ejemplo') en la línea 60, columna 1
+VARIABLE ('Future') en la línea 61, columna 1
+LESS_THAN ('<') en la línea 61, columna 7
+VOID ('void') en la línea 61, columna 8
+GREATER_THAN ('>') en la línea 61, columna 12
+VARIABLE ('fetchData') en la línea 61, columna 14
+LPAREN ('(') en la línea 61, columna 23
+RPAREN (')') en la línea 61, columna 24
+ASYNC ('async') en la línea 61, columna 26
+LKEY ('{') en la línea 61, columna 32
+AWAIT ('await') en la línea 62, columna 5
+VARIABLE ('Future') en la línea 62, columna 11
+PERIOD ('.') en la línea 62, columna 17
+VARIABLE ('delayed') en la línea 62, columna 18
+LPAREN ('(') en la línea 62, columna 25
+VARIABLE ('Duration') en la línea 62, columna 26
+LPAREN ('(') en la línea 62, columna 34
+VARIABLE ('seconds') en la línea 62, columna 35
+TERNARY_ELSE (':') en la línea 62, columna 42
+INT ('1') en la línea 62, columna 44
+RPAREN (')') en la línea 62, columna 45
+RPAREN (')') en la línea 62, columna 46
+SEMICOLON (';') en la línea 62, columna 47
+PRINT ('print') en la línea 63, columna 5
+LPAREN ('(') en la línea 63, columna 10
+STRING ('"Datos obtenidos de forma asíncrona."') en la línea 63, columna 11
+RPAREN (')') en la línea 63, columna 48
+SEMICOLON (';') en la línea 63, columna 49
+RKEY ('}') en la línea 64, columna 1

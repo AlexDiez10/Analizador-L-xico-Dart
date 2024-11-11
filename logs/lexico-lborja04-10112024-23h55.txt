@@ -1,0 +1,214 @@
+COMMENT (/*
+  Este es un comentario multilinea.
+  Define una función de cálculo.
+*/) at line 1
+DOC_COMMENT (/// Comentario de documentación) at line 6
+DOC_COMMENT (/// para la función principal) at line 7
+VOID (void) at line 8
+VARIABLE (main) at line 8
+LPAREN (() at line 8
+RPAREN ()) at line 8
+LKEY ({) at line 8
+COMMENT (// Variables constantes y finales) at line 9
+FINAL (final) at line 10
+INT_TYPE (int) at line 10
+VARIABLE (maxLimit) at line 10
+ASSIGN (=) at line 10
+DOUBLE (100.0) at line 10
+SEMICOLON (;) at line 10
+CONST (const) at line 11
+DOUBLE_TYPE (double) at line 11
+VARIABLE (pi) at line 11
+ASSIGN (=) at line 11
+DOUBLE (3.1415) at line 11
+SEMICOLON (;) at line 11
+STRING_TYPE (String) at line 12
+VARIABLE (greeting) at line 12
+ASSIGN (=) at line 12
+STRING ("Hola, mundo!") at line 12
+SEMICOLON (;) at line 12
+COMMENT (// Comentario de una sola línea) at line 14
+PRINT (print) at line 15
+LPAREN (() at line 15
+VARIABLE (greeting) at line 15
+RPAREN ()) at line 15
+SEMICOLON (;) at line 15
+COMMENT (// Declaración de variables de diferentes tipos) at line 17
+INT_TYPE (int) at line 18
+VARIABLE (counter) at line 18
+ASSIGN (=) at line 18
+INT (0) at line 18
+SEMICOLON (;) at line 18
+DOUBLE_TYPE (double) at line 19
+VARIABLE (result) at line 19
+ASSIGN (=) at line 19
+DOUBLE (0.0) at line 19
+SEMICOLON (;) at line 19
+BOOL_TYPE (bool) at line 20
+VARIABLE (isActive) at line 20
+ASSIGN (=) at line 20
+TRUE (true) at line 20
+SEMICOLON (;) at line 20
+VAR (var) at line 21
+VARIABLE (dynamicVar) at line 21
+ASSIGN (=) at line 21
+STRING ("Soy una variable dinámica") at line 21
+SEMICOLON (;) at line 21
+COMMENT (// Operadores aritméticos) at line 23
+VARIABLE (counter) at line 24
+INCREMENT_VAR (++) at line 24
+SEMICOLON (;) at line 24
+VARIABLE (counter) at line 25
+PLUS_ASSIGN (+=) at line 25
+INT (5) at line 25
+SEMICOLON (;) at line 25
+VARIABLE (counter) at line 26
+ASSIGN (=) at line 26
+VARIABLE (counter) at line 26
+MINUS (-) at line 26
+INT (2) at line 26
+SEMICOLON (;) at line 26
+VARIABLE (result) at line 27
+ASSIGN (=) at line 27
+VARIABLE (pi) at line 27
+TIMES (*) at line 27
+VARIABLE (counter) at line 27
+DIVIDE (/) at line 27
+INT (2) at line 27
+SEMICOLON (;) at line 27
+COMMENT (// Condicionales y operadores de comparación) at line 29
+IF (if) at line 30
+LPAREN (() at line 30
+VARIABLE (isActive) at line 30
+AND (&&) at line 30
+VARIABLE (counter) at line 30
+LESS_THAN (<) at line 30
+VARIABLE (maxLimit) at line 30
+RPAREN ()) at line 30
+LKEY ({) at line 30
+PRINT (print) at line 31
+LPAREN (() at line 31
+STRING ("El contador es menor que el límite y está activo") at line 31
+RPAREN ()) at line 31
+SEMICOLON (;) at line 31
+RKEY (}) at line 32
+ELSE (else) at line 32
+IF (if) at line 32
+LPAREN (() at line 32
+VARIABLE (counter) at line 32
+GREATER_EQ_THAN (>=) at line 32
+VARIABLE (maxLimit) at line 32
+OR (||) at line 32
+Illegal character '!' at line 32
+VARIABLE (isActive) at line 32
+RPAREN ()) at line 32
+LKEY ({) at line 32
+PRINT (print) at line 33
+LPAREN (() at line 33
+STRING ("El contador ha alcanzado o superado el límite o está inactivo") at line 33
+RPAREN ()) at line 33
+SEMICOLON (;) at line 33
+RKEY (}) at line 34
+ELSE (else) at line 34
+LKEY ({) at line 34
+PRINT (print) at line 35
+LPAREN (() at line 35
+STRING ("Estado desconocido") at line 35
+RPAREN ()) at line 35
+SEMICOLON (;) at line 35
+RKEY (}) at line 36
+COMMENT (// Bucle 'for' y operadores de incremento y decremento) at line 38
+FOR (for) at line 39
+LPAREN (() at line 39
+INT_TYPE (int) at line 39
+VARIABLE (i) at line 39
+ASSIGN (=) at line 39
+INT (0) at line 39
+SEMICOLON (;) at line 39
+VARIABLE (i) at line 39
+LESS_THAN (<) at line 39
+INT (5) at line 39
+SEMICOLON (;) at line 39
+VARIABLE (i) at line 39
+INCREMENT_VAR (++) at line 39
+RPAREN ()) at line 39
+LKEY ({) at line 39
+PRINT (print) at line 40
+LPAREN (() at line 40
+STRING ("Iteración número: ${i + 1}") at line 40
+RPAREN ()) at line 40
+SEMICOLON (;) at line 40
+VARIABLE (dynamicVar) at line 41
+ASSIGN (=) at line 41
+STRING ("Valor actualizado en la iteración ${i + 1}") at line 41
+SEMICOLON (;) at line 41
+RKEY (}) at line 42
+COMMENT (// Switch-case) at line 44
+SWITCH (switch) at line 45
+LPAREN (() at line 45
+VARIABLE (counter) at line 45
+RPAREN ()) at line 45
+LKEY ({) at line 45
+CASE (case) at line 46
+DOUBLE (10.0) at line 46
+TERNARY_ELSE (:) at line 46
+PRINT (print) at line 47
+LPAREN (() at line 47
+STRING ("El contador es exactamente 10") at line 47
+RPAREN ()) at line 47
+SEMICOLON (;) at line 47
+BREAK (break) at line 48
+SEMICOLON (;) at line 48
+CASE (case) at line 49
+DOUBLE (20.0) at line 49
+TERNARY_ELSE (:) at line 49
+PRINT (print) at line 50
+LPAREN (() at line 50
+STRING ("El contador es exactamente 20") at line 50
+RPAREN ()) at line 50
+SEMICOLON (;) at line 50
+BREAK (break) at line 51
+SEMICOLON (;) at line 51
+DEFAULT (default) at line 52
+TERNARY_ELSE (:) at line 52
+PRINT (print) at line 53
+LPAREN (() at line 53
+STRING ("El contador tiene un valor distinto a 10 o 20") at line 53
+RPAREN ()) at line 53
+SEMICOLON (;) at line 53
+RKEY (}) at line 54
+COMMENT (// Llamada a una función asíncrona) at line 56
+VARIABLE (fetchData) at line 57
+LPAREN (() at line 57
+RPAREN ()) at line 57
+SEMICOLON (;) at line 57
+RKEY (}) at line 58
+COMMENT (// Función asíncrona de ejemplo) at line 60
+VARIABLE (Future) at line 61
+LESS_THAN (<) at line 61
+VOID (void) at line 61
+GREATER_THAN (>) at line 61
+VARIABLE (fetchData) at line 61
+LPAREN (() at line 61
+RPAREN ()) at line 61
+ASYNC (async) at line 61
+LKEY ({) at line 61
+AWAIT (await) at line 62
+VARIABLE (Future) at line 62
+Illegal character '.' at line 62
+VARIABLE (delayed) at line 62
+LPAREN (() at line 62
+VARIABLE (Duration) at line 62
+LPAREN (() at line 62
+VARIABLE (seconds) at line 62
+TERNARY_ELSE (:) at line 62
+INT (1) at line 62
+RPAREN ()) at line 62
+RPAREN ()) at line 62
+SEMICOLON (;) at line 62
+PRINT (print) at line 63
+LPAREN (() at line 63
+STRING ("Datos obtenidos de forma asíncrona.") at line 63
+RPAREN ()) at line 63
+SEMICOLON (;) at line 63
+RKEY (}) at line 64

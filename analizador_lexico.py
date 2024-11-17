@@ -53,7 +53,9 @@ reserved = {
     'as': 'AS',
     'in': 'IN',
     'on': 'ON',
-    'assert': 'ASSERT'
+    'assert': 'ASSERT',
+    'List': 'LIST',
+    'var': 'VAR',
 }
 
 
@@ -178,7 +180,7 @@ def t_COMMENT(t):
     return t
 
 def t_BOOLEAN(t):
-    r'(True|False)'
+    r'(True|False|true|false)'
     if(t.value == 'True'):
         t.value = True
         return t

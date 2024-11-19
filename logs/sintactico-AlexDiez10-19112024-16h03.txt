@@ -1,0 +1,18 @@
+
+[INICIO] Análisis sintáctico
+Estructura de datos: Set válido
+Asignación válida
+Impresión válida
+Estructura de control: for válida
+Impresión válida
+Estructura de control: for válida
+Estructura de datos: Lista válida
+Asignación válida
+Impresión válida
+Estructura de control: for válida
+Función válida
+Función válida
+Función válida
+Clase válida
+
+[FIN] Análisis sintáctico

@@ -14,13 +14,17 @@ reserved = {
     'String': 'STRING_TYPE',
     'bool': 'BOOL_TYPE',
     'var': 'VAR_TYPE',
+    'class' : 'CLASS',
+    'const': 'CONST_TYPE',
+    'final': 'FINAL_TYPE',
     'import': 'IMPORT',
     'Set': 'SET',
     'List': 'LIST',
     'stdin': 'STDIN',
     'readLineSync': 'READLINESYNC',
     'do' : 'DO',
-    'Map' : 'MAP'
+    'Map' : 'MAP',
+    'in' : 'IN'
 }
 
 
@@ -121,7 +125,7 @@ def t_BOOLEAN(t):
     return t
 
 def t_STRING(t):
-    r"(\".*\"|'.*')"
+    r"(\".*\"|\'.*\')"
     return t
 
 def t_DOUBLE(t):

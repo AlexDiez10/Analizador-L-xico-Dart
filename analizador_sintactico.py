@@ -16,6 +16,8 @@ def p_sentencias(p):
                   | while
                   | do_while
                   | for
+                  | return
+                  | class
                   | import'''
     pass
 
@@ -75,10 +77,11 @@ def p_input(p):
 
 def p_elemento(p):
     '''elemento : INT
-            | VARIABLE
             | DOUBLE
             | STRING
-            | BOOLEAN'''
+            | BOOLEAN
+            | VARIABLE
+            | VARIABLE LPAREN element_list RPAREN'''
 
 def p_comparacion(p):
     '''comparacion : operacion comparador operacion'''
@@ -122,6 +125,8 @@ def p_element_list(t):
 
 def p_tipo_dato(t):
     '''tipo_dato : VOID 
+             | FINAL_TYPE
+             | CONST_TYPE
              | VAR_TYPE
              | INT_TYPE
              | STRING_TYPE
@@ -135,15 +140,20 @@ def p_tipo_coleccion(t):
     '''tipo_coleccion : INT_TYPE
              | STRING_TYPE
              | DOUBLE_TYPE
+             | FINAL_TYPE
+             | CONST_TYPE
+             | VAR_TYPE
              | BOOL_TYPE'''
 
-def p_instruccion_for(p):
-    '''instruccion_for : asignar_variable comparacion_logica SEMICOLON VARIABLE asignador expresion
-                        | asignar_variable comparacion_logica SEMICOLON VARIABLE modificador'''
-
 def p_for(p): #Alejandro Diez
-    '''for : FOR LPAREN instruccion_for RPAREN LKEY programa RKEY'''
+    '''for  : FOR LPAREN tipo_dato VARIABLE ASSIGN elemento SEMICOLON comparacion_logica SEMICOLON VARIABLE INCREMENT_VAR RPAREN LKEY sentencias RKEY
+            | FOR LPAREN tipo_dato VARIABLE IN VARIABLE RPAREN LKEY sentencias RKEY
+            | FOR LPAREN tipo_dato VARIABLE  LPAREN specific_instance RPAREN IN VARIABLE RPAREN LKEY sentencias RKEY'''
     print("Estructura de control: for válida")
+    
+def p_specific_instance(p):
+    '''specific_instance    : DOS_PUNTOS VARIABLE
+                            | DOS_PUNTOS VARIABLE COMA specific_instance'''    
 
 def p_while(p): #Luis Borja
     '''while : WHILE LPAREN comparacion_logica RPAREN LKEY programa RKEY'''
@@ -158,10 +168,13 @@ def p_diccionario(p): #Luis Borja
                     | LKEY RKEY'''
     print("Estructura de datos: Diccionario válido")
 
-def p_set(p): #Alejandro Diez
+def p_set(t):
     '''set : LKEY element_list RKEY
-            | LESS_THAN tipo_coleccion GREATER_THAN LKEY RKEY'''
+           | LKEY RKEY'''
     print("Estructura de datos: Set válido")
+
+def p_litset(t):
+    '''litset : SET LESS_THAN tipo_dato GREATER_THAN'''
 
 def p_key_element(p):
     '''key_element : elemento DOS_PUNTOS elemento'''
@@ -182,6 +195,27 @@ def p_bloques_else(p):
 def p_parametros(p):
     '''parametros : tipo_dato VARIABLE
                   | tipo_dato VARIABLE COMA parametros'''
+
+def p_class(p):
+    '''class : CLASS VARIABLE LKEY class_structure RKEY'''
+    print("Clase válida")
+
+def p_class_structure(p):
+    '''class_structure : instances constructor
+                       | instances constructor sentencias'''
+
+def p_instances(p):
+    '''instances : instance
+                 | instance instances'''
+
+def p_instance(p):
+    '''instance : FINAL_TYPE tipo_dato VARIABLE SEMICOLON'''
+
+def p_constructor(p):
+    '''constructor : VARIABLE LPAREN element_list RPAREN SEMICOLON'''
+
+def p_return(p):
+    '''return : RETURN elemento SEMICOLON'''
 
 def p_error(t):
     if t:

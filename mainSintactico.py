@@ -1,17 +1,15 @@
 import os
 from datetime import datetime
 import ply.yacc as yacc
-from analizador_sintactico import *
+from analizador_sintactico import parser
 
-username = input("Ingrese el nombre de usuario de Git: ")
-dart_filename = "algoritmos/" + (input("Ingrese el nombre del archivo de Dart: ")) + ".dart"
+#username = input("Ingrese el nombre de usuario de Git: ")
+dart_filename = "algoritmos/algoritmo2LuisBorja.dart" #"algoritmos/" + (input("Ingrese el nombre del archivo de Dart: ")) + ".dart"
 
-timestamp = datetime.now().strftime("%d%m%Y-%Hh%M")
-log_filename = f"logs/sintactico-{username}-{timestamp}.txt"
+#timestamp = datetime.now().strftime("%d%m%Y-%Hh%M")
+#log_filename = f"logs/sintactico-{username}-{timestamp}.txt"
 
-os.makedirs("logs", exist_ok=True)
-
-parser = yacc.yacc()
+#os.makedirs("logs", exist_ok=True)
 
 try:
     with open(dart_filename, "r", encoding="utf-8") as file:

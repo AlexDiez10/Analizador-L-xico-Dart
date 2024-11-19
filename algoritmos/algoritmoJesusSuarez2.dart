@@ -1,13 +1,13 @@
 void main() {
   List<int> numeros = [1, 2, 3, 4]; 
-  var nombres = ['Juan', 'Ana', 'Pedro'];
+  var nombres = ['Juan','Ana','Pedro'];
   List<String> palabras = [];
   var nombresVacios = [];
 
   print("Lista de números: numeros");
 
   int edad = 25;
-  if (edad >= 65) {
+  if (edad >= 65+3) {
     print("Eres adulto mayor");
   } else if (edad >= 18) {
     print("Eres adulto");
@@ -16,7 +16,7 @@ void main() {
   } else {
     print("Eres niño");
   }
-  int a = 10;
+  a = 10;
   int b = 5;
   int x;
   int y;
@@ -30,7 +30,7 @@ void main() {
     x = 0;
     y = 1;
   }
-
+  return;
 }
 
 

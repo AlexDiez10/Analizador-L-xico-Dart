@@ -13,15 +13,13 @@ reserved = {
     'break': 'BREAK',
     'continue': 'CONTINUE',
     'return': 'RETURN',
-    'true': 'TRUE',
-    'false': 'FALSE',
     'null': 'NULL',
     'void': 'VOID',
     'int': 'INT_TYPE',
     'double': 'DOUBLE_TYPE',
     'String': 'STRING_TYPE',
     'bool': 'BOOL_TYPE',
-    'var': 'VAR',
+    'var': 'VAR_TYPE',
     'final': 'FINAL',
     'const': 'CONST',
     'enum': 'ENUM',
@@ -55,7 +53,10 @@ reserved = {
     'on': 'ON',
     'assert': 'ASSERT',
     'List': 'LIST',
-    'var': 'VAR',
+    'stdin': 'STDIN',
+    'readLineSync': 'READLINESYNC',
+    'do' : 'DO',
+    'Map' : 'MAP'
 }
 
 
@@ -74,7 +75,6 @@ tokens = (
     'MODULO',
     'LPAREN',
     'RPAREN',
-    'MOD',
     'VARIABLE',
     'LKEY',
     'RKEY',
@@ -85,8 +85,6 @@ tokens = (
     'OR',
     'EQUALITY',
     'INEQUALITY',
-    'INCREMENT',
-    'DECREMENT',
     'INCREMENT_VAR',
     'DECREMENT_VAR',
     'GREATER_THAN',
@@ -94,7 +92,7 @@ tokens = (
     'GREATER_EQ_THAN',
     'LESS_EQ_THAN',
     'SEMICOLON',
-    'PERIOD',
+    'DOT',
     'NOT',
     'ASSIGN',
     'PLUS_ASSIGN',
@@ -102,21 +100,7 @@ tokens = (
     'TIMES_ASSIGN',
     'DIVIDE_ASSIGN',
     'MODULO_ASSIGN',
-    'LSHIFT_ASSIGN',
-    'RSHIFT_ASSIGN',
-    'BITWISE_AND_ASSIGN',
-    'BITWISE_OR_ASSIGN',
-    'BITWISE_XOR_ASSIGN',
-    'BITWISE_AND',
-    'BITWISE_OR',
-    'BITWISE_XOR',
-    'BITWISE_NOT',
-    'LSHIFT',
-    'RSHIFT',
-    'TERNARY_IF',
-    'TERNARY_ELSE',
-    'NULL_COALESCING',
-    'NULL_COALESCING_ASSIGN'
+    'DOS_PUNTOS'
 ) + tuple(reserved.values())
 
 
@@ -128,7 +112,6 @@ t_DIVIDE  = r'\/'
 t_MODULO = r'\%'
 t_LPAREN  = r'\('
 t_RPAREN  = r'\)'
-t_MOD = r'\%'
 t_LKEY  = r'\{'
 t_RKEY  = r'\}'
 t_LBRACKETS = r'\['
@@ -145,7 +128,8 @@ t_LESS_THAN = r'\<'
 t_GREATER_EQ_THAN = r'\>='
 t_LESS_EQ_THAN = r'\<='
 t_SEMICOLON = r'\;'
-t_PERIOD = r'\.'
+t_DOS_PUNTOS = r'\:'
+t_DOT = r'\.'
 t_NOT = r'!'
 t_ASSIGN = r'='
 t_PLUS_ASSIGN = r'\+='
@@ -153,21 +137,6 @@ t_MINUS_ASSIGN = r'-='
 t_TIMES_ASSIGN = r'\*='
 t_DIVIDE_ASSIGN = r'/='
 t_MODULO_ASSIGN = r'%='
-t_LSHIFT_ASSIGN = r'<<='
-t_RSHIFT_ASSIGN = r'>>='
-t_BITWISE_AND_ASSIGN = r'&='
-t_BITWISE_OR_ASSIGN = r'\|='
-t_BITWISE_XOR_ASSIGN = r'\^='
-t_BITWISE_AND = r'&'
-t_BITWISE_OR = r'\|'
-t_BITWISE_XOR = r'\^'
-t_BITWISE_NOT = r'~'
-t_LSHIFT = r'<<'
-t_RSHIFT = r'>>'
-t_TERNARY_IF = r'\?'
-t_TERNARY_ELSE = r':'
-t_NULL_COALESCING = r'\?\?'
-t_NULL_COALESCING_ASSIGN = r'\?\?='
 
 def t_DOC_COMMENT(t):
     r'(///.*|/\*\*[\s\S]*?\*/)'

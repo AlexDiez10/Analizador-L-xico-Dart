@@ -7,51 +7,15 @@ reserved = {
     'for': 'FOR',
     'if': 'IF',
     'else': 'ELSE',
-    'switch': 'SWITCH',
-    'case': 'CASE',
-    'default': 'DEFAULT',
-    'break': 'BREAK',
-    'continue': 'CONTINUE',
     'return': 'RETURN',
-    'null': 'NULL',
     'void': 'VOID',
     'int': 'INT_TYPE',
     'double': 'DOUBLE_TYPE',
     'String': 'STRING_TYPE',
     'bool': 'BOOL_TYPE',
     'var': 'VAR_TYPE',
-    'final': 'FINAL',
-    'const': 'CONST',
-    'enum': 'ENUM',
-    'class': 'CLASS',
-    'new': 'NEW',
-    'static': 'STATIC',
     'import': 'IMPORT',
-    'export': 'EXPORT',
-    'this': 'THIS',
-    'super': 'SUPER',
-    'extends': 'EXTENDS',
-    'implements': 'IMPLEMENTS',
-    'with': 'WITH',
-    'abstract': 'ABSTRACT',
-    'async': 'ASYNC',
-    'await': 'AWAIT',
-    'required': 'REQUIRED',
-    'get': 'GET',
-    'set': 'SET',
-    'late': 'LATE',
-    'covariant': 'COVARIANT',
-    'operator': 'OPERATOR',
-    'try': 'TRY',
-    'catch': 'CATCH',
-    'finally': 'FINALLY',
-    'throw': 'THROW',
-    'rethrow': 'RETHROW',
-    'is': 'IS', 
-    'as': 'AS',
-    'in': 'IN',
-    'on': 'ON',
-    'assert': 'ASSERT',
+    'Set': 'SET',
     'List': 'LIST',
     'stdin': 'STDIN',
     'readLineSync': 'READLINESYNC',
@@ -139,18 +103,18 @@ t_DIVIDE_ASSIGN = r'/='
 t_MODULO_ASSIGN = r'%='
 
 def t_DOC_COMMENT(t):
-    r'(///.*|/\*\*[\s\S]*?\*/)'
+    r'(\/\/\/.*|\/\*\*[\s\S]*?\*\/\*\/)'
     t.lexer.lineno += t.value.count("\n")
-    return t
+    pass
 
 def t_COMMENT(t):
-    r'//.*|/\*[\s\S]*?\*/'
+    r'\/\/.*|\/\*[\s\S]*?\*\/'
     t.lexer.lineno += t.value.count("\n")
-    return t
+    pass
 
 def t_BOOLEAN(t):
-    r'(True|False|true|false)'
-    if(t.value == 'True'):
+    r'(true|false)'
+    if(t.value == 'true'):
         t.value = True
         return t
     t.value = False

@@ -1,0 +1,41 @@
+
+[INICIO] Análisis sintáctico
+Estructura de datos: Lista válida
+Asignación válida
+Estructura de datos: Lista válida
+Asignación válida
+Estructura de datos: Lista válida
+Asignación válida
+Estructura de datos: Lista válida
+Asignación válida
+Impresión válida
+Asignación válida
+Impresión válida
+Impresión válida
+Impresión válida
+Impresión válida
+Estructura de control: if else válida
+Cambio de variable válido
+Asignación válida
+Asignación válida
+Asignación válida
+Asignación válida
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Estructura de control: if else válida
+Retorno válido
+Función válida
+Impresión válida
+Función válida
+Impresión válida
+Función válida
+Asignación válida
+Impresión válida
+Impresión válida
+Estructura de control: if else válida
+Función válida
+
+[FIN] Análisis sintáctico

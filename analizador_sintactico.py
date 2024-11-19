@@ -13,8 +13,16 @@ def p_sentencias(p):
                   | condicional
                   | funcion
                   | retorno
-                  | while'''
+                  | while
+                  | do_while
+                  | for
+                  | import'''
     pass
+
+def p_funcion(p): #Jesus Suarez
+    '''funcion : tipo_dato VARIABLE LPAREN parametros RPAREN LKEY programa RKEY
+                | tipo_dato VARIABLE LPAREN RPAREN LKEY programa RKEY'''
+    print("Función válida")
 
 def p_asignar_variable(p):
     '''asignar_variable : tipo_dato VARIABLE asignador expresion SEMICOLON
@@ -22,9 +30,13 @@ def p_asignar_variable(p):
     print("Asignación válida")
 
 def p_cambiar_variable(p):
-    '''cambiar_variable : VARIABLE INCREMENT_VAR SEMICOLON
-                        | VARIABLE DECREMENT_VAR SEMICOLON
+    '''cambiar_variable : VARIABLE modificador SEMICOLON
                         | VARIABLE asignador expresion SEMICOLON'''
+    print("Cambio de variable válido")
+
+def p_modificador(p):
+    '''modificador : INCREMENT_VAR
+                    | DECREMENT_VAR'''
 
 def p_asignador(p):
     '''asignador : ASSIGN
@@ -39,11 +51,17 @@ def p_expresion(p):
                     | comparacion
                     | list
                     | diccionario
+                    | set
                     | input'''
 
 def p_retorno(p):
     '''retorno : RETURN SEMICOLON
                 | RETURN operacion SEMICOLON'''
+    print("Retorno válido")
+
+def p_import(p):
+    '''import : IMPORT STRING SEMICOLON'''
+    print("Import válido")
 
 def p_impresion(p):
     '''impresion : PRINT LPAREN operacion RPAREN SEMICOLON
@@ -93,7 +111,7 @@ def p_operador(p):
                 | DIVIDE
                 | MODULO'''
 
-def p_list(t):
+def p_list(t): #Jesus Suarez
     '''list : LBRACKETS element_list RBRACKETS
             | LBRACKETS RBRACKETS'''
     print("Estructura de datos: Lista válida")
@@ -103,13 +121,15 @@ def p_element_list(t):
                     | elemento COMA element_list'''
 
 def p_tipo_dato(t):
-    '''tipo_dato : VAR_TYPE
+    '''tipo_dato : VOID 
+             | VAR_TYPE
              | INT_TYPE
              | STRING_TYPE
              | DOUBLE_TYPE
              | BOOL_TYPE
              | LIST LESS_THAN tipo_coleccion GREATER_THAN
-             | MAP LESS_THAN tipo_coleccion COMA tipo_coleccion GREATER_THAN'''
+             | MAP LESS_THAN tipo_coleccion COMA tipo_coleccion GREATER_THAN
+             | SET LESS_THAN tipo_coleccion GREATER_THAN'''
 
 def p_tipo_coleccion(t):
     '''tipo_coleccion : INT_TYPE
@@ -117,13 +137,31 @@ def p_tipo_coleccion(t):
              | DOUBLE_TYPE
              | BOOL_TYPE'''
 
-def p_while(p):
-    '''while : WHILE LPAREN comparacion_logica RPAREN LKEY programa RKEY
-                | DO LKEY programa RKEY WHILE LPAREN comparacion_logica RPAREN SEMICOLON'''
+def p_instruccion_for(p):
+    '''instruccion_for : asignar_variable comparacion_logica SEMICOLON VARIABLE asignador expresion
+                        | asignar_variable comparacion_logica SEMICOLON VARIABLE modificador'''
+
+def p_for(p): #Alejandro Diez
+    '''for : FOR LPAREN instruccion_for RPAREN LKEY programa RKEY'''
+    print("Estructura de control: for válida")
+
+def p_while(p): #Luis Borja
+    '''while : WHILE LPAREN comparacion_logica RPAREN LKEY programa RKEY'''
     print("Estructura de control: while válida")
 
-def p_diccionario(p):
-    '''diccionario : LKEY key_element_list RKEY'''
+def p_do_while(p): #Luis Borja
+    '''do_while : DO LKEY programa RKEY WHILE LPAREN comparacion_logica RPAREN SEMICOLON'''
+    print("Estructura de control: do while válida")
+
+def p_diccionario(p): #Luis Borja
+    '''diccionario : LKEY key_element_list RKEY
+                    | LKEY RKEY'''
+    print("Estructura de datos: Diccionario válido")
+
+def p_set(p): #Alejandro Diez
+    '''set : LKEY element_list RKEY
+            | LESS_THAN tipo_coleccion GREATER_THAN LKEY RKEY'''
+    print("Estructura de datos: Set válido")
 
 def p_key_element(p):
     '''key_element : elemento DOS_PUNTOS elemento'''
@@ -132,7 +170,7 @@ def p_key_element_list(p):
     '''key_element_list : key_element
                         | key_element COMA key_element_list'''
 
-def p_condicional(p):
+def p_condicional(p): #Jesus Suarez
     '''condicional : IF LPAREN comparacion_logica RPAREN LKEY programa RKEY bloques_else
                     | IF LPAREN comparacion_logica RPAREN LKEY programa RKEY'''
     print("Estructura de control: if else válida")
@@ -141,19 +179,26 @@ def p_bloques_else(p):
     '''bloques_else : ELSE IF LPAREN comparacion_logica RPAREN LKEY programa RKEY bloques_else
                     | ELSE LKEY programa RKEY'''
     
-def p_funcion(p):
-    '''funcion : VOID VARIABLE LPAREN parametros RPAREN LKEY programa RKEY
-                | VOID VARIABLE LPAREN RPAREN LKEY programa RKEY'''
-    print("Función válida")
-
 def p_parametros(p):
     '''parametros : tipo_dato VARIABLE
                   | tipo_dato VARIABLE COMA parametros'''
 
 def p_error(t):
     if t:
-        print(f"Error de sintaxis en el token '{t.value}' en la línea {t.lineno}")
+        # Mostrar el token problemático
+        error_message = f"\n[ERROR] Token inesperado: '{t.value}' en la línea {getattr(t, 'lineno', 'desconocida')}"
+        
+        # Intentar obtener contexto alrededor del error
+        if hasattr(t.lexer, "lexdata"):
+            start = max(t.lexpos - 20, 0)  # Obtener hasta 20 caracteres antes del error
+            end = min(t.lexpos + 20, len(t.lexer.lexdata))  # Obtener hasta 20 caracteres después del error
+            context = t.lexer.lexdata[start:end]
+            pointer = ' ' * (t.lexpos - start) + '^'  # Marcar el token con '^'
+            
+            error_message += f"\nContexto:\n{context}\n{pointer}"
+        
+        print(error_message)
     else:
-        print("Error de sintaxis en la entrada")
+        print("\n[ERROR] Entrada incompleta o vacía: no se puede continuar el análisis.")
 
 parser = yacc.yacc(debug=True)

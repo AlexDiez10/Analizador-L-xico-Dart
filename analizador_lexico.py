@@ -24,7 +24,11 @@ reserved = {
     'readLineSync': 'READLINESYNC',
     'do' : 'DO',
     'Map' : 'MAP',
-    'in' : 'IN'
+    'in' : 'IN',
+    'this' : 'THIS',
+    'dict' : 'DICT',
+    'set' : 'CONJUNTO',
+    'static' : 'STATIC'
 }
 
 
@@ -41,13 +45,13 @@ tokens = (
     'TIMES',
     'DIVIDE',
     'MODULO',
+    'LBRACKETS',
+    'RBRACKETS',
     'LPAREN',
     'RPAREN',
     'VARIABLE',
     'LKEY',
     'RKEY',
-    'LBRACKETS',
-    'RBRACKETS',
     'COMA',
     'AND',
     'OR',
@@ -139,7 +143,7 @@ def t_INT(t):
     return t
 
 def t_VARIABLE(t):
-    r'[a-zA-Z_][a-zA-z_0-9]*'
+    r'[a-zA-Z_][a-zA-Z_0-9]*(?=[\s\[\(])?'
     t.type = reserved.get(t.value, 'VARIABLE')
     return t
 

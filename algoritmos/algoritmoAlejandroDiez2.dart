@@ -36,5 +36,5 @@ class Candidato {
   final String name;
   final int yearsExp;
 
-  Candidato(name, yearsExp);
+  Candidato(this.name, this.yearsExp);
 }

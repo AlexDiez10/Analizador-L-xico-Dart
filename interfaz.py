@@ -103,25 +103,40 @@ def analizar():
         if errores_lexicos:
             cantidad_errores = len(errores_lexicos)
             mensaje_errores = "\n".join(errores_lexicos)
-            messagebox.showerror(
-                "Errores de Análisis Léxico",
-                f"No aprobó el Análisis Léxico\n Se encontraron {cantidad_errores} errores:\n\n{mensaje_errores}"
-            )
+            #Imagen y texto de confirmación
+            x = f"No aprobó el Análisis Léxico\n Se encontraron {cantidad_errores} errores:\n\n{mensaje_errores}"
+            texto_result.config(text=x)
+            imagen = tk.PhotoImage(file='./img/sweatbg.png')
+            img_label.config(image=imagen)
+            img_label.image = imagen
         else:
-            messagebox.showinfo("Análisis Léxico Exitoso", "El archivo pasó el análisis léxico sin errores.")
+            #Imagen y texto de confirmación
+            x ="El archivo pasó el análisis léxico sin errores."
+            texto_result.config(text=x)
             estado_analisis = 1  # Cambiar a análisis sintáctico
+            imagen = tk.PhotoImage(file='./img/winkbg.png')
+            img_label.config(image=imagen)
+            img_label.image = imagen
     elif estado_analisis == 1:
         # Análisis sintáctico
         exito = guardar_log_sintactico(contenido_archivo)
         if exito:
-            messagebox.showinfo("Análisis Sintáctico/Semántico Exitoso", "El archivo pasó el análisis sintáctico sin errores.")
+            #Imagen y texto de confirmación
+            x ="El archivo pasó el análisis sintáctico sin errores."
+            texto_result.config(text=x)
+            estado_analisis = 1  # Cambiar a análisis sintáctico
+            imagen = tk.PhotoImage(file='./img/winkbg.png')
+            img_label.config(image=imagen)
+            img_label.image = imagen
         else:
             cantidad_errores = len(errores_sintacticos)
             mensaje_errores = "\n".join(errores_sintacticos)
-            messagebox.showerror(
-                "Errores de Análisis Sintáctico",
-                f"No aprobó el Análisis Sintáctico/Semántico\nSe encontraron {cantidad_errores} errores"
-            )
+            #Imagen y texto de confirmación
+            x = f"No aprobó el Análisis Sintáctico/Semántico\nSe encontraron{cantidad_errores} errores"
+            texto_result.config(text=x)
+            imagen = tk.PhotoImage(file='./img/sweatbg.png')
+            img_label.config(image=imagen)
+            img_label.image = imagen
 
 def borrar():
     global estado_analisis, contenido_archivo
@@ -130,11 +145,16 @@ def borrar():
     texto.config(state="disabled")
     contenido_archivo = ""
     estado_analisis = 0
+    #imagen y texto reseteados 
+    texto_result.config(text="Bienvenido al analizador de Dart.")
+    imagen = tk.PhotoImage(file='./img/robotbg.png')
+    img_label.config(image=imagen)
+    img_label.image = imagen
 
 # Crear la ventana principal
 ventana = tk.Tk()
 ventana.title("Analizador de Archivos Dart")
-ventana.geometry("800x400")
+ventana.geometry("800x550")
 
 frame_principal = tk.Frame(ventana)
 frame_principal.pack(fill=tk.BOTH, expand=True)
@@ -154,5 +174,12 @@ btn_borrar.pack(pady=5, fill=tk.X)
 
 btn_analizar = tk.Button(frame_botones, text="Analizar", command=analizar)
 btn_analizar.pack(pady=5, fill=tk.X)
+
+imagen = tk.PhotoImage(file='./img/robotbg.png')
+img_label = tk.Label(ventana, image=imagen)
+img_label.pack(pady=5, fill=tk.X)
+
+texto_result = tk.Label(ventana, text="Bienvenido al analizador de Dart.", font=("Arial", 14))
+texto_result.pack(pady=20)
 
 ventana.mainloop()

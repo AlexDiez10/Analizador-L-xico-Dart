@@ -1,0 +1,79 @@
+[INICIO] Análisis sintáctico
+Import válido
+Asignación válida
+Asignación válida
+Retorno válido
+Función válida
+Asignación válida
+Retorno válido
+Función válida
+Clase válida
+Retorno válido
+Función estatica válida
+Asignación válida
+Cambio de variable válido
+Estructura de control: for each válida
+Retorno válido
+Función estatica válida
+Clase válida
+Asignación válida
+Impresión válida
+Impresión válida
+Impresión válida
+Impresión válida
+Asignación válida
+Asignación válida
+Impresión válida
+Estructura de datos: Lista válida
+Asignación válida
+Impresión válida
+Indexacion valida
+Cambio de variable válido
+Impresión válida
+Impresión válida
+Estructura de datos: Set válido
+Asignación válida
+Impresión válida
+Invocacion valida
+Impresión válida
+Invocacion valida
+Impresión válida
+Estructura de datos: Diccionario válido
+Asignación válida
+Impresión válida
+Indexacion valida
+Cambio de variable válido
+Impresión válida
+Indexacion valida
+Cambio de variable válido
+Impresión válida
+Asignación válida
+Impresión válida
+Impresión válida
+Cambio de variable válido
+Estructura de control: while válida
+Impresión válida
+Cambio de variable válido
+Impresión válida
+Estructura de control: do while válida
+Impresión válida
+Asignación válida
+Impresión válida
+Estructura de control: for válida
+Impresión válida
+Impresión válida
+Estructura de control: for each válida
+Impresión válida
+Impresión válida
+Estructura de control: for each válida
+Impresión válida
+Función válida
+Retorno válido
+Estructura de control: if else válida
+Asignación válida
+Cambio de variable válido
+Estructura de control: for each válida
+Retorno válido
+Función válida
+[ÉXITO] El análisis sintáctico se completó sin errores.
+[FIN] Análisis sintáctico

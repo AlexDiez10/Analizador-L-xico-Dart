@@ -1,7 +1,7 @@
 void main() {
-  List<int> numeros = [1, 2, 3, 4]; 
+  List<int> numeros = [1, 2, 3, 4]
   var nombres = ['Juan','Ana','Pedro'];
-  List<String> palabras = [];
+  List<String> palabras = []
   var nombresVacios = [];
 
   print("Lista de números: numeros");

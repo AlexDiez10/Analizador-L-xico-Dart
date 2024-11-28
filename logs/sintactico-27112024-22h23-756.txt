@@ -1,0 +1,30 @@
+[INICIO] Análisis sintáctico
+Import válido
+Impresión válida
+Estructura de datos: Diccionario válido
+Asignación válida
+Asignación válida
+Impresión válida
+Cambio de variable válido
+Estructura de control: while válida
+Asignación válida
+Impresión válida
+Cambio de variable válido
+Estructura de control: do while válida
+Función válida
+Asignación válida
+Retorno válido
+Función válida
+Asignación válida
+Asignación válida
+Impresión válida
+Estructura de control: for válida
+Retorno válido
+Función válida
+Impresión válida
+Input valido
+Asignación válida
+Retorno válido
+Función válida
+[ÉXITO] El análisis sintáctico se completó sin errores.
+[FIN] Análisis sintáctico

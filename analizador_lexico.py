@@ -157,12 +157,14 @@ def buscar_columna(input_data, token):
     line_start = input_data.rfind('\n', 0, token.lexpos) + 1
     return (token.lexpos - line_start) + 1
 
-def t_error(t):
-    column = buscar_columna(t.lexer.lexdata, t)
-    error_msg = f"Caracter ilegal '{t.value[0]}' en la línea {t.lineno}, columna {column}\n"
-    print(error_msg)
-    t.lexer.skip(1)
-    return error_msg
+errores_lexicos = []
 
+def t_error(t):
+    global errores_lexicos
+    column = buscar_columna(t.lexer.lexdata, t)
+    error_msg = f"Caracter ilegal '{t.value[0]}' en la línea {t.lineno}, columna {column}"
+    errores_lexicos.append(error_msg)  # Agregar el error a la lista
+    t.lexer.skip(1)  # Ignorar el carácter no válido y continuar
+    return error_msg 
 
 lexer = lex.lex()

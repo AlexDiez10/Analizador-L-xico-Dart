@@ -1,0 +1,212 @@
+[INICIO] Análisis sintáctico
+
+[ERROR] Token inesperado: '=' en la línea 312
+Contexto:
+in() {
+  List<int>  = [1, 2, 3, 4] 
+  va
+                    ^
+
+[ERROR] Token inesperado: '[' en la línea 312
+Contexto:
+() {
+  List<int>  = [1, 2, 3, 4] 
+  var 
+                    ^
+
+[ERROR] Token inesperado: '1' en la línea 312
+Contexto:
+) {
+  List<int>  = [1, 2, 3, 4] 
+  var n
+                    ^
+
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+ {
+  List<int>  = [1, 2, 3, 4] 
+  var no
+                    ^
+
+[ERROR] Token inesperado: '2' en la línea 312
+Contexto:
+
+  List<int>  = [1, 2, 3, 4] 
+  var nomb
+                    ^
+
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+  List<int>  = [1, 2, 3, 4] 
+  var nombr
+                    ^
+
+[ERROR] Token inesperado: '3' en la línea 312
+Contexto:
+List<int>  = [1, 2, 3, 4] 
+  var nombres
+                    ^
+
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+ist<int>  = [1, 2, 3, 4] 
+  var nombres 
+                    ^
+
+[ERROR] Token inesperado: '4' en la línea 312
+Contexto:
+t<int>  = [1, 2, 3, 4] 
+  var nombres = 
+                    ^
+
+[ERROR] Token inesperado: ']' en la línea 312
+Contexto:
+<int>  = [1, 2, 3, 4] 
+  var nombres = [
+                    ^
+
+[ERROR] Token inesperado: 'var' en la línea 313
+Contexto:
+  = [1, 2, 3, 4] 
+  var nombres = ['Juan
+                    ^
+
+[ERROR] Token inesperado: 'var' en la línea 315
+Contexto:
+ng> palabras = []
+  var nombresVacios = 
+                    ^
+
+[ERROR] Token inesperado: 'nombresVacios' en la línea 315
+Contexto:
+palabras = []
+  var nombresVacios = [];
+
+                    ^
+
+[ERROR] Token inesperado: '=' en la línea 315
+Contexto:
+  var nombresVacios = [];
+
+  print("List
+                    ^
+
+[ERROR] Token inesperado: '[' en la línea 315
+Contexto:
+var nombresVacios = [];
+
+  print("Lista 
+                    ^
+
+[ERROR] Token inesperado: ']' en la línea 315
+Contexto:
+ar nombresVacios = [];
+
+  print("Lista d
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '=' en la línea 312
+Contexto:
+in() {
+  List<int>  = [1, 2, 3, 4] 
+  va
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '[' en la línea 312
+Contexto:
+() {
+  List<int>  = [1, 2, 3, 4] 
+  var 
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '1' en la línea 312
+Contexto:
+) {
+  List<int>  = [1, 2, 3, 4] 
+  var n
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+ {
+  List<int>  = [1, 2, 3, 4] 
+  var no
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '2' en la línea 312
+Contexto:
+
+  List<int>  = [1, 2, 3, 4] 
+  var nomb
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+  List<int>  = [1, 2, 3, 4] 
+  var nombr
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '3' en la línea 312
+Contexto:
+List<int>  = [1, 2, 3, 4] 
+  var nombres
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: ',' en la línea 312
+Contexto:
+ist<int>  = [1, 2, 3, 4] 
+  var nombres 
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '4' en la línea 312
+Contexto:
+t<int>  = [1, 2, 3, 4] 
+  var nombres = 
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: ']' en la línea 312
+Contexto:
+<int>  = [1, 2, 3, 4] 
+  var nombres = [
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: 'var' en la línea 313
+Contexto:
+  = [1, 2, 3, 4] 
+  var nombres = ['Juan
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: 'var' en la línea 315
+Contexto:
+ng> palabras = []
+  var nombresVacios = 
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: 'nombresVacios' en la línea 315
+Contexto:
+palabras = []
+  var nombresVacios = [];
+
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '=' en la línea 315
+Contexto:
+  var nombresVacios = [];
+
+  print("List
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: '[' en la línea 315
+Contexto:
+var nombresVacios = [];
+
+  print("Lista 
+                    ^
+[ERROR] 
+[ERROR] Token inesperado: ']' en la línea 315
+Contexto:
+ar nombresVacios = [];
+
+  print("Lista d
+                    ^
+[FIN] Análisis sintáctico

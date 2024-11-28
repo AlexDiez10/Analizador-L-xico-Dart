@@ -277,28 +277,19 @@ def p_class(p):
     '''class : CLASS VARIABLE LKEY cuerpo_clase RKEY'''
     print("Clase válida")
 
+# Variable para registrar errores sintácticos
+errores_sintacticos = []
 def p_error(t):
+    global errores_sintacticos
     if t:
-        # Mostrar el token problemático
-        error_message = f"\n[ERROR] Token inesperado: '{t.value}' en la línea {getattr(t, 'lineno', 'desconocida')}"
-        
-        # Intentar obtener contexto alrededor del error
-        if hasattr(t.lexer, "lexdata"):
-            start = max(t.lexpos - 20, 0)  # Obtener hasta 20 caracteres antes del error
-            end = min(t.lexpos + 20, len(t.lexer.lexdata))  # Obtener hasta 20 caracteres después del error
-            context = t.lexer.lexdata[start:end]
-            pointer = ' ' * (t.lexpos - start) + '^'  # Marcar el token con '^'
-            
-            error_message += f"\nContexto:\n{context}\n{pointer}"
-        
+        error_message = f"[ERROR] Token inesperado: '{t.value}' en la línea {getattr(t, 'lineno', 'desconocida')}"
+        errores_sintacticos.append(error_message)
         print(error_message)
-        
-        # Ignorar el token problemático
-        parser.errok()  # Resetea el estado de error del parser
-        t.lexer.skip(1)  # Salta el token problemático
-
+        parser.errok()  # Resetea el estado del parser para continuar
     else:
-        print("\n[ERROR] Entrada incompleta o vacía: no se puede continuar el análisis.")
+        errores_sintacticos.append("[ERROR] Entrada incompleta o vacía.")
+        print("[ERROR] Entrada incompleta o vacía.")
+
 
 
 parser = yacc.yacc(debug=True)

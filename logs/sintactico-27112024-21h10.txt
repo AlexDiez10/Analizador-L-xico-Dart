@@ -1,0 +1,3 @@
+[INICIO] Análisis sintáctico
+[ÉXITO] El análisis sintáctico se completó sin errores.
+[FIN] Análisis sintáctico

@@ -2,16 +2,25 @@ import ply.yacc as yacc
 from analizador_lexico import tokens
 
 def p_programa(p):
-    '''programa : sentencias
-                | sentencias programa'''
-    pass
+    '''programa : importaciones instrucciones
+                | instrucciones'''
+
+def p_instrucciones(p):
+    '''instrucciones : sentencias
+                | sentencias instrucciones'''
+
+def p_importaciones(p):
+    '''importaciones : import
+                    | import importaciones'''
+
+def p_import(p):
+    '''import : IMPORT STRING SEMICOLON'''
+    print("Import válido")
 
 def p_sentencias(p):
     '''sentencias : asignar_variable
                   | funcion
-                  | class
-                  | import'''
-    pass
+                  | class'''
 
 def p_sentencias_funcion(p):
     '''sentencias_funcion : asignar_variable
@@ -40,16 +49,18 @@ def p_cuerpo_clase(p):
     '''cuerpo_clase : sentencias_clase
                     | sentencias_clase cuerpo_clase'''
 
+def p_class(p):
+    '''class : CLASS VARIABLE LKEY cuerpo_clase RKEY'''
+    print("Clase válida")
+
 def p_invocacion(p):
-    '''invocacion : VARIABLE LPAREN element_list RPAREN SEMICOLON
-                | VARIABLE LPAREN RPAREN SEMICOLON
-                | VARIABLE DOT VARIABLE LPAREN element_list RPAREN SEMICOLON
-                | VARIABLE DOT VARIABLE LPAREN RPAREN SEMICOLON'''
+    '''invocacion : getVariable LPAREN element_list RPAREN SEMICOLON
+                | getVariable LPAREN RPAREN SEMICOLON'''
     print('Invocacion valida')
     
 def p_invocar(p):
-    '''invocar : VARIABLE LPAREN element_list RPAREN
-                | VARIABLE LPAREN RPAREN'''
+    '''invocar : getVariable LPAREN element_list RPAREN
+                | getVariable LPAREN RPAREN'''
 
 def p_constructor(p):
     '''constructor : VARIABLE LPAREN atributo_list RPAREN SEMICOLON'''
@@ -71,6 +82,10 @@ def p_funcion_static(p): #Jesus Suarez
 def p_variables(p):
     '''variables : VARIABLE
                  | variable_indexada'''
+
+def p_getVariable(p):
+    '''getVariable : variables 
+                    | variables DOT getVariable'''
 
 def p_asignar_variable(p):
     '''asignar_variable : tipo_dato variables asignador expresion SEMICOLON
@@ -103,8 +118,7 @@ def p_expresion(p):
                     | diccionario
                     | set
                     | input
-                    | invocar
-                    | variable_indexada'''
+                    | invocar'''
 
 def p_retorno(p):
     '''retorno : RETURN SEMICOLON
@@ -114,10 +128,6 @@ def p_retorno(p):
 def p_variable_indexada(p):
     '''variable_indexada : VARIABLE LBRACKETS inmutables RBRACKETS'''
     print("Indexacion valida")
-
-def p_import(p):
-    '''import : IMPORT STRING SEMICOLON'''
-    print("Import válido")
 
 def p_impresion(p):
     '''impresion : PRINT LPAREN operacion RPAREN SEMICOLON
@@ -134,11 +144,7 @@ def p_elemento(p):
             | DOUBLE
             | STRING
             | BOOLEAN
-            | get_variable'''
-
-def p_get_variable(p):
-    '''get_variable : VARIABLE
-                    | VARIABLE DOT get_variable'''
+            | getVariable'''
 
 def p_comparacion(p):
     '''comparacion : operacion comparador operacion'''
@@ -210,8 +216,7 @@ def p_for(p): #Alejandro Diez
     print("Estructura de control: for válida")
 
 def p_for_each(p):
-    '''for_each : FOR LPAREN tipo_dato VARIABLE IN VARIABLE RPAREN LKEY cuerpo_funcion RKEY
-                | FOR LPAREN tipo_dato VARIABLE IN VARIABLE DOT VARIABLE RPAREN LKEY cuerpo_funcion RKEY
+    '''for_each : FOR LPAREN tipo_dato VARIABLE IN getVariable RPAREN LKEY cuerpo_funcion RKEY
                 | FOR LPAREN tipo_dato VARIABLE LPAREN specific_instance RPAREN IN VARIABLE RPAREN LKEY cuerpo_funcion RKEY'''
     print("Estructura de control: for each válida")
     
@@ -220,16 +225,19 @@ def p_specific_instance(p):
                             | DOS_PUNTOS VARIABLE COMA specific_instance'''    
 
 def p_while(p): #Luis Borja
-    '''while : WHILE LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY
-              | WHILE LPAREN get_variable RPAREN LKEY cuerpo_funcion RKEY
-              | WHILE LPAREN BOOLEAN RPAREN LKEY cuerpo_funcion RKEY'''
+    '''while : WHILE LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY
+              | WHILE LPAREN condiciones RPAREN LKEY RKEY'''
     print("Estructura de control: while válida")
 
 def p_do_while(p): #Luis Borja
-    '''do_while : DO LKEY cuerpo_funcion RKEY WHILE LPAREN comparacion_logica RPAREN SEMICOLON
-                | DO LKEY cuerpo_funcion RKEY WHILE LPAREN get_variable RPAREN SEMICOLON
-                | DO LKEY cuerpo_funcion RKEY WHILE LPAREN BOOLEAN RPAREN SEMICOLON'''
+    '''do_while : DO LKEY cuerpo_funcion RKEY WHILE LPAREN condiciones RPAREN SEMICOLON'''
     print("Estructura de control: do while válida")
+
+def p_condiciones(p):
+    '''condiciones : comparacion_logica
+                    | getVariable
+                    | BOOLEAN
+                    | invocar'''
 
 def p_inmutables(p):
     '''inmutables : STRING
@@ -255,27 +263,19 @@ def p_set(p):
     print("Estructura de datos: Set válido")
 
 def p_condicional(p): #Jesus Suarez
-    '''condicional : IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY
-                    | IF LPAREN get_variable RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | IF LPAREN get_variable RPAREN LKEY cuerpo_funcion RKEY
-                    | IF LPAREN BOOLEAN RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | IF LPAREN BOOLEAN RPAREN LKEY cuerpo_funcion RKEY'''
+    '''condicional : IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY bloques_else
+                    | IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY
+                    | IF LPAREN condiciones RPAREN LKEY RKEY
+                    | IF LPAREN condiciones RPAREN LKEY RKEY bloques_else'''
     print("Estructura de control: if else válida")
 
 def p_bloques_else(p):
-    '''bloques_else : ELSE IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | ELSE IF LPAREN get_variable RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | ELSE IF LPAREN BOOLEAN RPAREN LKEY cuerpo_funcion RKEY bloques_else
+    '''bloques_else : ELSE IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY bloques_else
                     | ELSE LKEY cuerpo_funcion RKEY'''
     
 def p_parametros(p):
     '''parametros : tipo_dato VARIABLE
                   | tipo_dato VARIABLE COMA parametros'''
-
-def p_class(p):
-    '''class : CLASS VARIABLE LKEY cuerpo_clase RKEY'''
-    print("Clase válida")
 
 # Variable para registrar errores sintácticos
 errores_sintacticos = []

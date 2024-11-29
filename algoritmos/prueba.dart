@@ -5,7 +5,6 @@ class Rectangulo {
   // Atributos para almacenar las dimensiones
   final double base;
   final double altura;
-
   // Constructor
   Rectangulo(this.base, this.altura);
 

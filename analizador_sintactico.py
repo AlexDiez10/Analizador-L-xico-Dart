@@ -56,14 +56,15 @@ def p_class(p):
 def p_invocacion(p):
     '''invocacion : getVariable LPAREN element_list RPAREN SEMICOLON
                 | getVariable LPAREN RPAREN SEMICOLON'''
-    print('Invocacion valida')
+    print('Llamada a funcion valida')
     
 def p_invocar(p):
     '''invocar : getVariable LPAREN element_list RPAREN
                 | getVariable LPAREN RPAREN'''
 
-def p_constructor(p):
+def p_constructor(p): #constructor base
     '''constructor : VARIABLE LPAREN atributo_list RPAREN SEMICOLON'''
+    print("Constructor basico valido")
 
 def p_atributo_list(p):
     '''atributo_list : THIS DOT VARIABLE
@@ -88,15 +89,15 @@ def p_getVariable(p):
                     | variables DOT getVariable'''
 
 def p_asignar_variable(p):
-    '''asignar_variable : tipo_dato variables asignador expresion SEMICOLON
-                        | tipo_dato variables SEMICOLON
-                        | FINAL_TYPE tipo_dato variables asignador expresion SEMICOLON
-                        | FINAL_TYPE tipo_dato variables SEMICOLON '''
+    '''asignar_variable : tipo_dato VARIABLE asignador expresion SEMICOLON
+                        | tipo_dato VARIABLE SEMICOLON
+                        | prefijo tipo_variable VARIABLE asignador expresion SEMICOLON
+                        | prefijo tipo_variable VARIABLE SEMICOLON'''
     print("Asignación válida")
 
 def p_cambiar_variable(p):
-    '''cambiar_variable : variables modificador SEMICOLON
-                        | variables asignador expresion SEMICOLON'''
+    '''cambiar_variable : getVariable modificador SEMICOLON
+                        | getVariable asignador expresion SEMICOLON'''
     print("Cambio de variable válido")
 
 def p_modificador(p):
@@ -112,13 +113,11 @@ def p_asignador(p):
                 | MODULO_ASSIGN'''
 
 def p_expresion(p):
-    '''expresion : operacion
-                    | comparacion
+    '''expresion : comparacion_logica
                     | list
                     | diccionario
                     | set
-                    | input
-                    | invocar'''
+                    | input'''
 
 def p_retorno(p):
     '''retorno : RETURN SEMICOLON
@@ -130,10 +129,13 @@ def p_variable_indexada(p):
     print("Indexacion valida")
 
 def p_impresion(p):
-    '''impresion : PRINT LPAREN operacion RPAREN SEMICOLON
-                 | PRINT LPAREN comparacion_logica RPAREN SEMICOLON
+    '''impresion : PRINT LPAREN comparacion_logica RPAREN SEMICOLON
                  | PRINT LPAREN RPAREN SEMICOLON'''
     print("Impresión válida")
+
+def p_parametros(p):
+    '''parametros : tipo_dato VARIABLE
+                  | tipo_dato VARIABLE COMA parametros'''
 
 def p_input(p):
     '''input : STDIN DOT READLINESYNC LPAREN RPAREN'''
@@ -141,13 +143,20 @@ def p_input(p):
 
 def p_elemento(p):
     '''elemento : INT
-            | DOUBLE
-            | STRING
-            | BOOLEAN
-            | getVariable'''
+                | DOUBLE
+                | STRING
+                | BOOLEAN
+                | getVariable'''
+
+def p_comparables(p):
+    '''comparables : operacion
+                    | STRING
+                    | BOOLEAN
+                    | invocar'''
 
 def p_comparacion(p):
-    '''comparacion : operacion comparador operacion'''
+    '''comparacion : comparables comparador comparables
+                    | comparables'''
 
 def p_comparacion_logica(p):
     '''comparacion_logica : comparacion
@@ -157,7 +166,7 @@ def p_operador_logico(p):
     '''operador_logico : AND
                         | OR
                         | NOT'''
-
+    
 def p_comparador(p):
     '''comparador : EQUALITY
                     | INEQUALITY
@@ -166,9 +175,14 @@ def p_comparador(p):
                     | GREATER_EQ_THAN
                     | LESS_EQ_THAN'''
 
+def p_operables(p):
+    '''operables : INT
+                | DOUBLE
+                | getVariable'''
+
 def p_operacion(p):
-    '''operacion : elemento
-                | elemento operador operacion'''
+    '''operacion : operables
+                | operables operador operables'''
     
 def p_operador(p):
     '''operador : PLUS
@@ -186,17 +200,23 @@ def p_element_list(t):
     '''element_list : elemento
                     | elemento COMA element_list'''
 
+def p_prefijo(p):
+    '''prefijo : FINAL_TYPE
+             | CONST_TYPE'''
+
 def p_tipo_dato(t):
     '''tipo_dato : VOID
              | VARIABLE 
-             | FINAL_TYPE
-             | CONST_TYPE
+             | prefijo
              | VAR_TYPE
              | INT_TYPE
              | STRING_TYPE
              | DOUBLE_TYPE
              | BOOL_TYPE
-             | LIST LESS_THAN tipo_coleccion GREATER_THAN
+             | colecciones'''
+
+def p_colecciones(p):
+    '''colecciones : LIST LESS_THAN tipo_coleccion GREATER_THAN
              | MAP LESS_THAN tipo_coleccion COMA tipo_coleccion GREATER_THAN
              | SET LESS_THAN tipo_coleccion GREATER_THAN'''
 
@@ -207,7 +227,18 @@ def p_tipo_coleccion(t):
              | FINAL_TYPE
              | CONST_TYPE
              | VAR_TYPE
-             | BOOL_TYPE'''
+             | BOOL_TYPE
+             | VARIABLE'''
+    
+def p_tipo_variable(t):
+    '''tipo_variable : VOID
+             | VARIABLE 
+             | VAR_TYPE
+             | INT_TYPE
+             | STRING_TYPE
+             | DOUBLE_TYPE
+             | BOOL_TYPE
+             | colecciones'''
 
 def p_for(p): #Alejandro Diez
     '''for  : FOR LPAREN asignar_variable comparacion_logica SEMICOLON VARIABLE modificador RPAREN LKEY cuerpo_funcion RKEY
@@ -225,19 +256,13 @@ def p_specific_instance(p):
                             | DOS_PUNTOS VARIABLE COMA specific_instance'''    
 
 def p_while(p): #Luis Borja
-    '''while : WHILE LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY
-              | WHILE LPAREN condiciones RPAREN LKEY RKEY'''
+    '''while : WHILE LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY
+              | WHILE LPAREN comparacion_logica RPAREN LKEY RKEY'''
     print("Estructura de control: while válida")
 
 def p_do_while(p): #Luis Borja
-    '''do_while : DO LKEY cuerpo_funcion RKEY WHILE LPAREN condiciones RPAREN SEMICOLON'''
+    '''do_while : DO LKEY cuerpo_funcion RKEY WHILE LPAREN comparacion_logica RPAREN SEMICOLON'''
     print("Estructura de control: do while válida")
-
-def p_condiciones(p):
-    '''condiciones : comparacion_logica
-                    | getVariable
-                    | BOOLEAN
-                    | invocar'''
 
 def p_inmutables(p):
     '''inmutables : STRING
@@ -263,19 +288,15 @@ def p_set(p):
     print("Estructura de datos: Set válido")
 
 def p_condicional(p): #Jesus Suarez
-    '''condicional : IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY bloques_else
-                    | IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY
-                    | IF LPAREN condiciones RPAREN LKEY RKEY
-                    | IF LPAREN condiciones RPAREN LKEY RKEY bloques_else'''
+    '''condicional : IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY bloques_else
+                    | IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY
+                    | IF LPAREN comparacion_logica RPAREN LKEY RKEY
+                    | IF LPAREN comparacion_logica RPAREN LKEY RKEY bloques_else'''
     print("Estructura de control: if else válida")
 
 def p_bloques_else(p):
-    '''bloques_else : ELSE IF LPAREN condiciones RPAREN LKEY cuerpo_funcion RKEY bloques_else
+    '''bloques_else : ELSE IF LPAREN comparacion_logica RPAREN LKEY cuerpo_funcion RKEY bloques_else
                     | ELSE LKEY cuerpo_funcion RKEY'''
-    
-def p_parametros(p):
-    '''parametros : tipo_dato VARIABLE
-                  | tipo_dato VARIABLE COMA parametros'''
 
 # Variable para registrar errores sintácticos
 errores_sintacticos = []

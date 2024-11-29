@@ -1,0 +1,56 @@
+
+[INICIO] Análisis sintáctico
+Asignación válida
+Asignación válida
+Asignación válida
+Asignación válida
+Constructor basico valido
+Impresión válida
+Función válida
+Clase válida
+Estructura de datos: Lista válida
+Asignación válida
+Llamada a funcion valida
+Impresión válida
+Función válida
+Estructura de datos: Lista válida
+Asignación válida
+Llamada a funcion valida
+Estructura de control: if else válida
+Estructura de control: for each válida
+Retorno válido
+Función válida
+Cambio de variable válido
+Impresión válida
+Retorno válido
+Estructura de control: if else válida
+Estructura de control: for each válida
+Impresión válida
+Función válida
+Impresión válida
+Llamada a funcion valida
+Estructura de control: for each válida
+Función válida
+Clase válida
+Asignación válida
+Asignación válida
+Asignación válida
+Asignación válida
+Estructura de datos: Set válido
+Asignación válida
+Estructura de datos: Diccionario válido
+Asignación válida
+Impresión válida
+Impresión válida
+Impresión válida
+Impresión válida
+Asignación válida
+Asignación válida
+Asignación válida
+Llamada a funcion valida
+Llamada a funcion valida
+Llamada a funcion valida
+Llamada a funcion valida
+Función válida
+
+[FIN] Análisis sintáctico

@@ -1,0 +1,48 @@
+
+[INICIO] Análisis sintáctico
+Estructura de datos: Lista válida
+[ERROR] Token inesperado: 'var' en la línea 3
+[ERROR] Token inesperado: 'nombres' en la línea 3
+[ERROR] Token inesperado: '=' en la línea 3
+[ERROR] Token inesperado: '[' en la línea 3
+[ERROR] Token inesperado: ''Juan','Ana','Pedro'' en la línea 3
+[ERROR] Token inesperado: ']' en la línea 3
+Asignación válida
+Estructura de datos: Lista válida
+[ERROR] Token inesperado: 'var' en la línea 5
+[ERROR] Token inesperado: 'nombresVacios' en la línea 5
+[ERROR] Token inesperado: '=' en la línea 5
+[ERROR] Token inesperado: '[' en la línea 5
+[ERROR] Token inesperado: ']' en la línea 5
+Asignación válida
+Impresión válida
+Asignación válida
+Impresión válida
+Impresión válida
+Impresión válida
+Impresión válida
+Estructura de control: if else válida
+Cambio de variable válido
+Asignación válida
+Asignación válida
+Asignación válida
+Asignación válida
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Cambio de variable válido
+Estructura de control: if else válida
+Retorno válido
+Función válida
+Impresión válida
+Función válida
+Impresión válida
+Función válida
+Asignación válida
+Impresión válida
+Impresión válida
+Estructura de control: if else válida
+Función válida
+
+[FIN] Análisis sintáctico

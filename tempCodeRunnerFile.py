@@ -1,1 +1,1 @@
-get_variable
+tipo_coleccion

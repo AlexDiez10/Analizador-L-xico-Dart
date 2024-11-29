@@ -182,7 +182,7 @@ def p_operables(p):
 
 def p_operacion(p):
     '''operacion : operables
-                | operables operador operables'''
+                | operables operador operacion'''
     
 def p_operador(p):
     '''operador : PLUS
